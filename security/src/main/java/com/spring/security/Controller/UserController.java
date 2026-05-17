@@ -1,5 +1,6 @@
 package com.spring.security.Controller;
 
+import com.spring.security.DTO.LoginRequest;
 import com.spring.security.Entity.Users;
 import com.spring.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,14 @@ public class UserController {
     @PostMapping("/register")
     public Users register(@RequestBody Users users) {
         return userService.register(users);
-
     }
+
+    @PostMapping("/login")
+    public String login(@RequestBody LoginRequest login){
+//        System.out.println(users);
+//        return  "Success";
+
+         return  userService.verify(login);
+    }
+
 }
